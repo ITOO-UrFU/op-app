@@ -1,6 +1,8 @@
 import { RouterModule } from '@angular/router'
-import { NgModule} from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule }from '@angular/http';
+
 
 import { AppComponent }  from './app.component';
 import { HeaderComponent } from './components/header.component';
@@ -11,6 +13,7 @@ import { CoursesComponent } from './components/courses.component'
 @NgModule({
   imports: [
     BrowserModule,
+    HttpModule,
     RouterModule.forRoot([
       {path:"register", component: RegistrationComponent},
       {path:"main", component: MainPageComponent},
@@ -26,6 +29,11 @@ import { CoursesComponent } from './components/courses.component'
     MainPageComponent,
     CoursesComponent
 ],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ],
+
+  providers: [
+  { provide: LOCALE_ID,
+    useValue: "ru-RU" },
+]
 })
 export class AppModule { }
