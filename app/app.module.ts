@@ -3,7 +3,6 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }from '@angular/http';
 
-
 import { AppComponent }  from './app.component';
 import { HeaderComponent } from './components/header.component';
 import { RegistrationComponent } from './components/registration.component'
@@ -36,4 +35,7 @@ import { CoursesComponent } from './components/courses.component'
     useValue: "ru-RU" },
 ]
 })
-export class AppModule { }
+
+export class AppModule { 
+  
+}
