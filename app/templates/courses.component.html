@@ -3,17 +3,13 @@
 <button (click)="updateCourses()">Update</button>
 
 <div>
-<!-- | date: 'yMMMMd'-->
-<div class="item" *ngFor="let course of CoursesList">
-    <div>{{course.start_date}}</div>
-    <div>{{ course.type}}</div>
-    <div>{{ course.title}}</div>
-    <img src="{{course.image}}"/>
-    <div>{{ course.profession_count}} профессий</div>
-    <div>{{ course.program_count}} программ</div>
-
-
-
+    <!-- | date: 'yMMMMd'-->
+    <div class="item" *ngFor="let course of CoursesList">
+        <div>{{ course.start_date }}</div>
+        <div>{{ course.type }}</div>
+        <div>{{ course.title }}</div>
+        <img src="{{course.image}}" />
+        <div>{{ course.profession_count }} профессий</div>
+        <div>{{ course.program_count }} программ</div>
+    </div>
 </div>
-
-<div>
