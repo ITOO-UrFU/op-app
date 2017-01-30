@@ -1,3 +1,15 @@
 .item {
     display: inline-block;
+    width: 200px;
+    height: 300px;
+    padding: 0 5px;
+    margin: 10px 6px;
+    background: #efefef;
+    border: 1px solid #e6e6e6;
+    border-radius: 2px;
+    box-shadow: 0 0 3px #444444;
+    vertical-align: top;
+}
+.item img{
+    width: 100%;
 }
