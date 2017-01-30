@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header.component';
 import { RegistrationComponent } from './components/registration.component'
 import { MainPageComponent } from './components/mainpage.component'
 import { CoursesComponent } from './components/courses.component'
+import { CourseComponent } from './components/course.component'
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { CoursesComponent } from './components/courses.component'
       {path:"register", component: RegistrationComponent},
       {path:"main", component: MainPageComponent},
       {path:"courses", component: CoursesComponent},
+      {path:"courses/:id", component: CourseComponent},
       {path:"", redirectTo:"/main", pathMatch:'full' },
       {path:"**", redirectTo:"/main", pathMatch:'full' }
     ])],
@@ -26,7 +28,8 @@ import { CoursesComponent } from './components/courses.component'
     HeaderComponent,
     RegistrationComponent,
     MainPageComponent,
-    CoursesComponent
+    CoursesComponent,
+    CourseComponent
 ],
   bootstrap:    [ AppComponent ],
 

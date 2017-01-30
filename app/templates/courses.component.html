@@ -1,12 +1,14 @@
 <h3>мы куРсы!</h3>
 
-<button (click)="updateCourses()">Update</button>
+<button (click)="ngOnInit()">Update</button>
 
 <div>
     <!-- | date: 'yMMMMd'-->
     <div class="item" *ngFor="let course of CoursesList">
         <div>{{ course.start_date }}</div>
+        <a [routerLink]="course.id"> 
         <img src="{{course.image}}" />
+        </a>
         <div>{{ course.type }}</div>
         <div>{{ course.title }}</div>
         <div>{{ course.profession_count }} профессий</div>
