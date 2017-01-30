@@ -11,11 +11,19 @@ export class CoursesService {
   constructor (private http: Http) {}
 
   private _CoursesListLink = 'http://openedu.urfu.ru:33011/api/v1/courses/?format=json';
+  private _CourseLink = 'http://openedu.urfu.ru:33011/api/v1/courses/?format=json&id=';
 
   getCoursesList() {
      return this.http.get(this._CoursesListLink)
                        .map(res => <Course[]> res.json())
                        .catch(this.handleError);
+   }
+
+   getCourse(id: number){
+     return this.http.get(this._CourseLink + id)
+                       .map(res => <Course> res.json())
+                       .catch(this.handleError);
+
    }
 
   private handleError (error: Response) {

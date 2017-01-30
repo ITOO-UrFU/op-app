@@ -50,7 +50,6 @@ export class CoursesComponent implements OnInit {
               course.start_date = 'Осталось дней: ' + diffDays;
             }
           }
-          //console.log(course);
           result.push(course);
         }
       });
