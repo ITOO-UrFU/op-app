@@ -6,13 +6,13 @@ import { Course } from './course';
 
 @Component({
   selector: 'course-comp',
-  template: `<h3>Я курс! {{ currentCourse.title }} <br\> мой id:  {{ id }} </h3>`,
+  template: `<h3 *ngIf="currentCourse">Я курс! {{ currentCourse.title }} <br\> мой id:  {{ id }} </h3>`,
   providers: [CoursesService]
 })
 
 export class CourseComponent {  
   id: number;
-  currentCourse: any = {};
+  currentCourse: Course;
 
   constructor(private activateRoute: ActivatedRoute, private _coursesService: CoursesService){
     this.id = activateRoute.snapshot.params['id'];
@@ -29,7 +29,7 @@ export class CourseComponent {
     this._coursesService.getCourse(id)
       .subscribe((course) => {
           //console.log(course.id);
-          this.currentCourse = new Course(course);
+          this.currentCourse = course;
       });
     
   }

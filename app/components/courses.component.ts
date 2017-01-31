@@ -18,7 +18,7 @@ export class CoursesComponent implements OnInit {
   errorMessage: string;
   CoursesList: Course[];
 
-  constructor(private _coursesService: CoursesService) { }
+  constructor(private router: Router, private _coursesService: CoursesService) { }
 
   ngOnInit() {
     this.CoursesList = this.getCoursesList();
@@ -56,6 +56,8 @@ export class CoursesComponent implements OnInit {
     return result;
   }
 
-
+  onSelect(selected: Course) {
+    this.router.navigate(["courses", selected.id]);
+  }
 
 }

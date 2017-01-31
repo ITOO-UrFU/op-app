@@ -4,11 +4,11 @@
 
 <div>
     <!-- | date: 'yMMMMd'-->
-    <div class="item" *ngFor="let course of CoursesList">
+    <div class="item" *ngFor="let course of CoursesList" (click)="onSelect(course)"> 
         <div>{{ course.start_date }}</div>
-        <a [routerLink]="course.id"> 
+        <!-- <a [routerLink]="course.id"> -->
         <img src="{{course.image}}" />
-        </a>
+        <!-- </a> -->
         <div>{{ course.type }}</div>
         <div>{{ course.title }}</div>
         <div>{{ course.profession_count }} профессий</div>

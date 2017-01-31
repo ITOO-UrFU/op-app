@@ -24,7 +24,7 @@ export class CoursesService {
 
    getCourse(id: number){
      return this.http.get(this._CourseLink + id)
-                       .map(res => <any> res.json())
+                       .map(res => <Course> res.json())
                        .catch(this.handleError);
    }
 

@@ -1,6 +1,6 @@
 export class Course{
- /*   public id: number;
-    public title: string;
+   public id: number;
+  /*  public title: string;
     public start_date: string;
     public type: string;
     public image: string;
@@ -20,10 +20,14 @@ export class Course{
     public external_link: any;
     public authors_ordering: any;*/
 
-    constructor(obj: any) {
-        for(let el in obj){
+    constructor(
+
+
+
+    ) {
+       /* for(let el in obj){
             this[el] = obj[el];
-        }
+    }*/
     }
 }
 
