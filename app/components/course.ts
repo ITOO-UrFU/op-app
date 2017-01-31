@@ -1,5 +1,5 @@
 export class Course{
-    public id: number;
+ /*   public id: number;
     public title: string;
     public start_date: string;
     public type: string;
@@ -18,11 +18,18 @@ export class Course{
     public description: any;
     public about: any;
     public external_link: any;
-    public authors_ordering: any;
+    public authors_ordering: any;*/
 
-    constructor(
-        id: number,
-        title: string,
+    constructor(obj: any) {
+        for(let el in obj){
+            this[el] = obj[el];
+        }
+    }
+}
+
+
+/*       id: number
+       title: string,
         start_date: string,
         type: string,
         image: string,
@@ -40,6 +47,4 @@ export class Course{
         description: any,
         about: any,
         external_link: any,
-        authors_ordering: any
-    ) {}
-}
+        authors_ordering: any*/

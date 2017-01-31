@@ -5,10 +5,14 @@ import { HttpModule }from '@angular/http';
 
 import { AppComponent }  from './app.component';
 import { HeaderComponent } from './components/header.component';
-import { RegistrationComponent } from './components/registration.component'
-import { MainPageComponent } from './components/mainpage.component'
-import { CoursesComponent } from './components/courses.component'
-import { CourseComponent } from './components/course.component'
+import { RegistrationComponent } from './components/registration.component';
+import { MainPageComponent } from './components/mainpage.component';
+import { CoursesComponent } from './components/courses.component';
+import { CourseComponent } from './components/course.component';
+
+import { ProgramsComponent } from './components/programs.component';
+import { ProgramComponent } from './components/program.component';
+
 
 @NgModule({
   imports: [
@@ -18,7 +22,9 @@ import { CourseComponent } from './components/course.component'
       {path:"register", component: RegistrationComponent},
       {path:"main", component: MainPageComponent},
       {path:"courses", component: CoursesComponent},
+      {path:"programs", component: ProgramsComponent},
       {path:"courses/:id", component: CourseComponent},
+      {path:"programs/:id", component: ProgramComponent},
       {path:"", redirectTo:"/main", pathMatch:'full' },
       {path:"**", redirectTo:"/main", pathMatch:'full' }
     ])],
@@ -29,7 +35,9 @@ import { CourseComponent } from './components/course.component'
     RegistrationComponent,
     MainPageComponent,
     CoursesComponent,
-    CourseComponent
+    CourseComponent,
+    ProgramsComponent,
+    ProgramComponent
 ],
   bootstrap:    [ AppComponent ],
 

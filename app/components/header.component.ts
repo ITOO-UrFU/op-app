@@ -6,6 +6,7 @@ import { Component, OnInit  } from '@angular/core';
   <a routerLink="/main">Главная</a>
   <a routerLink="/courses">Курсы</a>
   <a routerLink="/register">Регистрация</a>
+  <a routerLink="/programs">Программы</a>
   </div><router-outlet></router-outlet>
   `,
   styles: [`

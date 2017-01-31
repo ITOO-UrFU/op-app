@@ -2,17 +2,17 @@ import { Component } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { CoursesService } from '../services/courses.service'
 import { Response } from '@angular/http';
-import { Course } from './course';
+import { Program } from './program';
 
 @Component({
-  selector: 'course-comp',
-  template: `<h3>Я курс! {{ currentCourse.title }} <br\> мой id:  {{ id }} </h3>`,
+  selector: 'program-comp',
+  template: `<h3>Я Программа! {{ currentProgram.title }} <br\> мой id:  {{ id }} </h3>`,
   providers: [CoursesService]
 })
 
-export class CourseComponent {  
-  id: number;
-  currentCourse: any = {};
+export class ProgramComponent {  
+  id: string;
+  currentProgram: any = {};
 
   constructor(private activateRoute: ActivatedRoute, private _coursesService: CoursesService){
     this.id = activateRoute.snapshot.params['id'];
@@ -21,15 +21,15 @@ export class CourseComponent {
   ngOnInit() {
     //this._coursesService.getCourse(this.id).subscribe((course: Response) => { this.currentCourse = course; }) ;
     //this.getCourse(this.id);
-    this.getCourse(this.id);
+    this.getProgram(this.id);
   }
 
-  getCourse(id: number): void {
+  getProgram(id: number): void {
     
-    this._coursesService.getCourse(id)
-      .subscribe((course) => {
+    this._coursesService.getProgram(id)
+      .subscribe((program) => {
           //console.log(course.id);
-          this.currentCourse = new Course(course);
+          this.currentProgram = new Program(program);
       });
     
   }
