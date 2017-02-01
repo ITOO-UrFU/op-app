@@ -18,13 +18,13 @@ import { Program } from './program';
      </div>
      </div>
     <div class="title">
-      <i class="dropdown icon"></i>Level 2
+      <i class="dropdown icon"></i>Пул траекторий образователной программы
     </div>
     <div class="content">
       <div *ngFor="let idEPT of currentProgram.educational_program_trajectories"><module-list-comp [idModuleList]='idEPT'></module-list-comp></div>
     </div>
     <div class="title">
-      <i class="dropdown icon"></i>Level 3
+      <i class="dropdown icon"></i>Пулы модулей по выбору
     </div>
     <div class="content">
       <div *ngFor="let idcmp of currentProgram.cmp"><module-list-choice-comp [idChoiceModuleList]='idcmp'></module-list-choice-comp></div>
@@ -67,8 +67,14 @@ export class ProgramComponent implements AfterViewInit {
 
 @Component({
   selector: 'module-list-comp',
-  template: `<div *ngIf="currentModuleList"> {{currentModuleList.title}} 
-  <div *ngFor="let module of currentModuleList.modules"> <module-comp [idModule]='module'> Загрузка... </module-comp></div></div>
+  template: `<div *ngIf="currentModuleList">
+    <div class="title">
+  <i class="dropdown icon"></i> {{currentModuleList.title}} 
+    </div>
+  <div class="content">
+  Модули:
+  <div class="accordion">
+  <div *ngFor="let module of currentModuleList.modules"> <module-comp [idModule]='module'> Загрузка... </module-comp></div></div></div></div>
   `
 })
 export class ModuleListComponent{
@@ -93,8 +99,14 @@ constructor(private activateRoute: ActivatedRoute, private _coursesService: Cour
 @Component({
   selector: 'module-list-choice-comp',
   template: `<div *ngIf="currentChoiceModuleList">
-  <h4>{{currentChoiceModuleList.title}}</h4>
-  <div *ngFor="let module of currentChoiceModuleList.modules"> <module-comp [idModule]='module'> Загрузка... </module-comp></div></div>
+  <div class="title">
+  <i class="dropdown icon"></i>
+  {{currentChoiceModuleList.title}}
+  </div>
+  <div class="content">
+  Модули:
+  <div class="accordion">
+  <div *ngFor="let module of currentChoiceModuleList.modules"> <module-comp [idModule]='module'> Загрузка... </module-comp></div></div></div></div>
   `
 })
 export class ChoiceModuleListComponent{
@@ -123,6 +135,7 @@ constructor(private activateRoute: ActivatedRoute, private _coursesService: Cour
   <i class="dropdown icon"></i> {{ currentModule.title }}
   </div>
   <div class="content">
+  Дисциплины:
   <div class="accordion">
   <div *ngFor="let idDiscipline of currentModule.disciplines"><discipline-comp [idDiscipline]='idDiscipline'> Загрузка... </discipline-comp> 
   </div>
@@ -159,7 +172,7 @@ export class ModuleComponent {
   selector: 'discipline-comp',
   template: `<div class="title"><i class="dropdown icon"></i> {{ currentDiscipline.title }}, {{ currentDiscipline.points }} з.е.</div>
    <div class="content">
-              Level 1A-A Contents
+              Онлайн-курсов для освоения данной дисциплины не обнаруженно...
           </div>`
 })
 
