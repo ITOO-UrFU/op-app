@@ -11,7 +11,7 @@ import { CoursesComponent } from './components/courses.component';
 import { CourseComponent } from './components/course.component';
 
 import { ProgramsComponent } from './components/programs.component';
-import { ProgramComponent } from './components/program.component';
+import { ProgramComponent, ModuleComponent, DisciplineComponent } from './components/program.component';
 
 
 @NgModule({
@@ -37,7 +37,9 @@ import { ProgramComponent } from './components/program.component';
     CoursesComponent,
     CourseComponent,
     ProgramsComponent,
-    ProgramComponent
+    ProgramComponent,
+    ModuleComponent,
+    DisciplineComponent
 ],
   bootstrap:    [ AppComponent ],
 
