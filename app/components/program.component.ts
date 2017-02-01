@@ -174,7 +174,7 @@ export class ModuleComponent {
   selector: 'discipline-comp',
   template: `<div class="title"><i class="dropdown icon"></i> {{ currentDiscipline.title }}, {{ currentDiscipline.points }} з.е.</div>
    <div class="content">
-              Онлайн-курсов для освоения данной дисциплины не обнаруженно...
+              Онлайн-курсов для освоения данной дисциплины не обнаружено...
           </div>`
 })
 
