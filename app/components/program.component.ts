@@ -11,6 +11,8 @@ import { Program } from './program';
   <div><div *ngFor="let module of currentProgram.modules"> <module-comp [idModule]='module'> Загрузка... </module-comp></div></div>
   <hr />
   <div *ngFor="let idEPT of currentProgram.educational_program_trajectories"><module-list-comp [idModuleList]='idEPT'></module-list-comp></div>
+  <hr />
+  <div *ngFor="let idcmp of currentProgram.cmp"><module-list-choice-comp [idChoiceModuleList]='idcmp'></module-list-choice-comp></div>
   `,
   providers: [CoursesService]
 })
@@ -62,6 +64,32 @@ constructor(private activateRoute: ActivatedRoute, private _coursesService: Cour
       .subscribe((moduleList) => {
         this.currentModuleList = moduleList;
         console.log(this.currentModuleList)
+      });
+
+  }
+}
+
+@Component({
+  selector: 'module-list-choice-comp',
+  template: `<div *ngIf="currentChoiceModuleList">
+  <h4>{{currentChoiceModuleList.title}}</h4>
+  <div *ngFor="let module of currentChoiceModuleList.modules"> <module-comp [idModule]='module'> Загрузка... </module-comp></div></div>
+  `
+})
+export class ChoiceModuleListComponent{
+@Input() idChoiceModuleList: string;
+currentChoiceModuleList:any;
+constructor(private activateRoute: ActivatedRoute, private _coursesService: CoursesService) {
+}
+  ngOnInit() {
+    this.getChoiceModuleList(this.idChoiceModuleList);
+  }
+  getChoiceModuleList(id: String): void{
+
+    this._coursesService.getElement("cells", id)
+      .subscribe((moduleList) => {
+        this.currentChoiceModuleList = moduleList;
+        console.log(this.currentChoiceModuleList)
       });
 
   }
