@@ -6,11 +6,13 @@ import { Program } from './program';
 
 @Component({
   selector: 'program-comp',
-  template: `
-  <h3>Программа: "{{ currentProgram.title }}" <br\>  </h3>
+  template: `<div class="article">
+  <div  class = "ui masthead vertical segment">
+  <h1  class="ui  header">Программа: "{{ currentProgram.title }}"  </h1>
+  </div>
   <div class="ui styled accordion">
     <div class="title">
-      <i class="dropdown icon"></i>Обязательные модули для освоения
+      <h3><i class="dropdown icon"></i>Обязательные модули для освоения</h3>
     </div>
     <div class="content">
     <div class="accordion">
@@ -18,19 +20,19 @@ import { Program } from './program';
      </div>
      </div>
     <div class="title">
-      <i class="dropdown icon"></i>Пул траекторий образователной программы
+      <h3><i class="dropdown icon"></i>Пул траекторий образователной программы</h3>
     </div>
     <div class="content">
       <div *ngFor="let idEPT of currentProgram.educational_program_trajectories"><module-list-comp [idModuleList]='idEPT'></module-list-comp></div>
     </div>
     <div class="title">
-      <i class="dropdown icon"></i>Пулы модулей по выбору
+      <h3><i class="dropdown icon"></i>Пулы модулей по выбору</h3>
     </div>
     <div class="content">
       <div *ngFor="let idcmp of currentProgram.cmp"><module-list-choice-comp [idChoiceModuleList]='idcmp'></module-list-choice-comp></div>
     </div>
   </div>
-  
+  </div>
   `,
   providers: [CoursesService]
 })
