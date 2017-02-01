@@ -9,11 +9,11 @@ import { Program } from './program';
   template: `
   <h3>Программа: "{{ currentProgram.title }}" <br\>  </h3>
   <div class="ui styled accordion">
-    <div class="active title">
+    <div class="title">
       <i class="dropdown icon"></i>Обязательные модули для освоения
     </div>
-    <div class="active content">
-        <div *ngFor="let module of currentProgram.modules"> <module-comp [idModule]='module'> Загрузка... </module-comp></div>
+    <div class="content">
+        <div  *ngFor="let module of currentProgram.modules"><module-comp [idModule]='module'> Загрузка... </module-comp></div>
     </div>
     <div class="title">
       <i class="dropdown icon"></i>Level 2
@@ -25,10 +25,10 @@ import { Program } from './program';
       <i class="dropdown icon"></i>Level 3
     </div>
     <div class="content">
-      
+      <div *ngFor="let idcmp of currentProgram.cmp"><module-list-choice-comp [idChoiceModuleList]='idcmp'></module-list-choice-comp></div>
     </div>
   </div>
-  <div *ngFor="let idcmp of currentProgram.cmp"><module-list-choice-comp [idChoiceModuleList]='idcmp'></module-list-choice-comp></div>
+  
   `,
   providers: [CoursesService]
 })
@@ -61,8 +61,7 @@ export class ProgramComponent {
 
 @Component({
   selector: 'module-list-comp',
-  template: `<div *ngIf="currentModuleList">
-  <h4>{{currentModuleList.title}}</h4>
+  template: `<div *ngIf="currentModuleList"> {{currentModuleList.title}} 
   <div *ngFor="let module of currentModuleList.modules"> <module-comp [idModule]='module'> Загрузка... </module-comp></div></div>
   `
 })
@@ -116,7 +115,6 @@ constructor(private activateRoute: ActivatedRoute, private _coursesService: Cour
   selector: 'module-comp',
   template: `<div>{{ currentModule.title }}</div>
   <div *ngFor="let idDiscipline of currentModule.disciplines"><discipline-comp [idDiscipline]='idDiscipline'> Загрузка... </discipline-comp>
-  
   `
 })
 
