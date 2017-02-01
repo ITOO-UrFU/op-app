@@ -13,8 +13,10 @@ import { Program } from './program';
       <i class="dropdown icon"></i>Обязательные модули для освоения
     </div>
     <div class="content">
-        <div  *ngFor="let module of currentProgram.modules"><module-comp [idModule]='module'> Загрузка... </module-comp></div>
-    </div>
+    <div class="accordion">
+    <div  *ngFor="let module of currentProgram.modules"><module-comp [idModule]='module'> Загрузка... </module-comp></div>
+     </div>
+     </div>
     <div class="title">
       <i class="dropdown icon"></i>Level 2
     </div>
@@ -113,9 +115,15 @@ constructor(private activateRoute: ActivatedRoute, private _coursesService: Cour
 
 @Component({
   selector: 'module-comp',
-  template: `<div>{{ currentModule.title }}</div>
-  <div *ngFor="let idDiscipline of currentModule.disciplines"><discipline-comp [idDiscipline]='idDiscipline'> Загрузка... </discipline-comp>
-  `
+  template: ` <div class="title">
+  <i class="dropdown icon"></i> {{ currentModule.title }}
+  </div>
+  <div class="content">
+  <div class="accordion">
+  <div *ngFor="let idDiscipline of currentModule.disciplines"><discipline-comp [idDiscipline]='idDiscipline'> Загрузка... </discipline-comp> 
+  </div>
+  </div>
+  </div>`
 })
 
 export class ModuleComponent {
@@ -145,7 +153,10 @@ export class ModuleComponent {
 
 @Component({
   selector: 'discipline-comp',
-  template: `<div>- {{ currentDiscipline.title }}, {{ currentDiscipline.points }} з.е.</div>`
+  template: `<div class="title"><i class="dropdown icon"></i> {{ currentDiscipline.title }}, {{ currentDiscipline.points }} з.е.</div>
+   <div class="content">
+              Level 1A-A Contents
+          </div>`
 })
 
 export class DisciplineComponent{
@@ -163,7 +174,7 @@ export class DisciplineComponent{
       .subscribe((module) => {
         this.currentDiscipline = module;
         //console.log(this.currentDiscipline);
-        $('.accordion').accordion()
+       
       });
 
   }
