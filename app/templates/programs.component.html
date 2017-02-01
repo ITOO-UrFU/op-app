@@ -1,15 +1,15 @@
-<h3>Мы программы!!</h3>
-
-<div>
-    <!-- | date: 'yMMMMd'-->
-    <div class="item" *ngFor="let program of ProgramsList">
-         <a [routerLink]="program.id"> 
-             
-             <div>{{ program.title }}</div>
-        </a>
-        <!-- <p *ngFor="let modul of program.modules">{{modul}}</p> -->
+<div class="article">
+    <div class="ui masthead vertical segment">
+        <h1 class="ui  header">Открытые образовательеые программы</h1>
     </div>
-</div>       
+    <div>
+        <!-- | date: 'yMMMMd'-->
+        <div class="item" *ngFor="let program of ProgramsList">
+            <a [routerLink]="program.id">
 
-
-        
+                <div>{{ program.title }}</div>
+            </a>
+            <!-- <p *ngFor="let modul of program.modules">{{modul}}</p> -->
+        </div>
+    </div>
+</div>

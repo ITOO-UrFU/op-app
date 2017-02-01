@@ -1,17 +1,21 @@
-<h3>мы куРсы!</h3>
+<div class="article">
+    <div class="ui masthead vertical segment">
+        <h1 class="ui  header">Все курсы</h1>
+    </div>
 
-<button (click)="ngOnInit()">Update</button>
+    <button class="positive ui button" (click)="ngOnInit()">Update</button>
 
-<div>
-    <!-- | date: 'yMMMMd'-->
-    <div class="item" *ngFor="let course of CoursesList" (click)="onSelect(course)"> 
-        <div>{{ course.start_date }}</div>
-        <!-- <a [routerLink]="course.id"> -->
-        <img src="{{course.image}}" />
-        <!-- </a> -->
-        <div>{{ course.type }}</div>
-        <div>{{ course.title }}</div>
-        <div>{{ course.profession_count }} профессий</div>
-        <div>{{ course.program_count }} программ</div>
+    <div>
+        <!-- | date: 'yMMMMd'-->
+        <div class="item" *ngFor="let course of CoursesList" (click)="onSelect(course)">
+            <div>{{ course.start_date }}</div>
+            <!-- <a [routerLink]="course.id"> -->
+            <img src="{{course.image}}" />
+            <!-- </a> -->
+            <div>{{ course.type }}</div>
+            <div>{{ course.title }}</div>
+            <div>{{ course.profession_count }} профессий</div>
+            <div>{{ course.program_count }} программ</div>
+        </div>
     </div>
 </div>
