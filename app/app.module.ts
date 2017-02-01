@@ -11,7 +11,7 @@ import { CoursesComponent } from './components/courses.component';
 import { CourseComponent } from './components/course.component';
 
 import { ProgramsComponent } from './components/programs.component';
-import { ProgramComponent, ModuleComponent, DisciplineComponent } from './components/program.component';
+import { ProgramComponent, ModuleListComponent, ModuleComponent, DisciplineComponent } from './components/program.component';
 
 
 @NgModule({
@@ -38,6 +38,7 @@ import { ProgramComponent, ModuleComponent, DisciplineComponent } from './compon
     CourseComponent,
     ProgramsComponent,
     ProgramComponent,
+    ModuleListComponent,
     ModuleComponent,
     DisciplineComponent
 ],

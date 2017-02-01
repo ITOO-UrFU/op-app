@@ -10,6 +10,10 @@ export class CoursesService {
 
   constructor(private http: Http) { }
 
+
+  private _Server  = 'http://openedu.urfu.ru:33011/api/v1/';
+
+
   private _CoursesListLink = 'http://openedu.urfu.ru:33011/api/v1/courses/?format=json';
   private _CourseLink = 'http://openedu.urfu.ru:33011/api/v1/courses/?format=json&id=';
 
@@ -19,6 +23,31 @@ export class CoursesService {
   private _ModuleLink = 'http://openedu.urfu.ru:33011/api/v1/modules/?format=json&id='
 
   private _DisciplineLink = 'http://openedu.urfu.ru:33011/api/v1/disciplines/'
+
+
+
+  //private _List = _Server + key +'/?format=json';
+  //private _Element = _Server + key +'/?format=json&id='+id;
+
+
+  getElement(type: string, id: any) {
+    return this.http.get(this._Server + type + '/?format=json&id='+ id)
+      .map(res => <any>res.json())
+      .catch(this.handleError);
+  }
+    getElementOld(type: string, id: any) {
+    return this.http.get(this._Server + type +"/"+ id+ '/?format=json')
+      .map(res => <any>res.json())
+      .catch(this.handleError);
+  }
+
+  getList(type: string) {
+    return this.http.get(this._Server + type + '/?format=json')
+      .map(res => <any>res.json())
+      .catch(this.handleError);
+  }
+
+
 
   getCoursesList() {
     return this.http.get(this._CoursesListLink)
@@ -39,7 +68,7 @@ export class CoursesService {
   }
 
   getProgram(id: number) {
-    return this.http.get(this._ProgramLink + id + '/?format=json')
+    return this.http.get(this._ProgramLink + '?format=json&id='+id)
       .map(res => <any>res.json())
       .catch(this.handleError);
   }
@@ -54,6 +83,13 @@ export class CoursesService {
       .map(res => <any>res.json())
       .catch(this.handleError);
   }
+
+
+
+
+
+
+
 
   private handleError(error: Response) {
     //in a real world app, we may send the error to some remote logging infrastructure
