@@ -2,19 +2,14 @@ import { Component, OnInit  } from '@angular/core';
 
 @Component({
   selector: 'header-comp',
-  template: `<div class="header-comp">
-  <a routerLink="/main">Главная</a>
-  <a routerLink="/courses">Курсы</a>
-  <a routerLink="/register">Регистрация</a>
-  <a routerLink="/programs">Программы</a>
+  template: `<div class="ui four item menu">
+  <a class="item" routerLink="/main">Главная</a>
+  <a class="item" routerLink="/courses">Курсы</a>
+  <a class="item" routerLink="/register">Регистрация</a>
+  <a class="item" routerLink="/programs">Программы</a>
   </div><router-outlet></router-outlet>
-  `,
-  styles: [`
-    .header-comp {
-      width: 100%; 
-      height: 30px; 
-      background: #e6e6e6; 
-    }`]
+  `
+
 })
 
 export class HeaderComponent {}

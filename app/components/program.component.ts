@@ -8,10 +8,26 @@ import { Program } from './program';
   selector: 'program-comp',
   template: `
   <h3>Программа: "{{ currentProgram.title }}" <br\>  </h3>
-  <div><div *ngFor="let module of currentProgram.modules"> <module-comp [idModule]='module'> Загрузка... </module-comp></div></div>
-  <hr />
-  <div *ngFor="let idEPT of currentProgram.educational_program_trajectories"><module-list-comp [idModuleList]='idEPT'></module-list-comp></div>
-  <hr />
+  <div class="ui styled accordion">
+    <div class="active title">
+      <i class="dropdown icon"></i>Обязательные модули для освоения
+    </div>
+    <div class="active content">
+        <div *ngFor="let module of currentProgram.modules"> <module-comp [idModule]='module'> Загрузка... </module-comp></div>
+    </div>
+    <div class="title">
+      <i class="dropdown icon"></i>Level 2
+    </div>
+    <div class="content">
+      <div *ngFor="let idEPT of currentProgram.educational_program_trajectories"><module-list-comp [idModuleList]='idEPT'></module-list-comp></div>
+    </div>
+    <div class="title">
+      <i class="dropdown icon"></i>Level 3
+    </div>
+    <div class="content">
+      
+    </div>
+  </div>
   <div *ngFor="let idcmp of currentProgram.cmp"><module-list-choice-comp [idChoiceModuleList]='idcmp'></module-list-choice-comp></div>
   `,
   providers: [CoursesService]
@@ -63,7 +79,7 @@ constructor(private activateRoute: ActivatedRoute, private _coursesService: Cour
     this._coursesService.getElementOld("educationalprogramtrajectoriespools", id)
       .subscribe((moduleList) => {
         this.currentModuleList = moduleList;
-        console.log(this.currentModuleList)
+        //console.log(this.currentModuleList)
       });
 
   }
@@ -148,7 +164,8 @@ export class DisciplineComponent{
     this._coursesService.getElement('disciplines', id)
       .subscribe((module) => {
         this.currentDiscipline = module;
-        console.log(this.currentDiscipline);
+        //console.log(this.currentDiscipline);
+        $('.accordion').accordion()
       });
 
   }
