@@ -1,3 +1,7 @@
 .ui.styled.accordion{
   width: 100%
 }
+
+#programsHeader {
+    margin-bottom: 14px;
+}
