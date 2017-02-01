@@ -1,4 +1,4 @@
-import { Input, Component } from '@angular/core';
+import { Input, Component, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CoursesService } from '../services/courses.service'
 import { Response } from '@angular/http';
@@ -35,7 +35,7 @@ import { Program } from './program';
   providers: [CoursesService]
 })
 
-export class ProgramComponent {
+export class ProgramComponent implements AfterViewInit {
   id: number;
   currentProgram: any = {};
 
@@ -47,6 +47,10 @@ export class ProgramComponent {
     //this._coursesService.getCourse(this.id).subscribe((course: Response) => { this.currentCourse = course; }) ;
     //this.getCourse(this.id);
     this.getProgram(this.id);
+  }
+
+  ngAfterViewInit() {
+      $('.ui.accordion').accordion('refresh');
   }
 
   getProgram(id: number): void {

@@ -11,7 +11,9 @@
     "test": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
     "test-once": "tsc && karma start karma.conf.js --single-run",
     "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "tsc:w": "tsc -w",
+    "preinstall": "npm i -g typings && typings install dt~jquery --global --save && typings install dt~semantic-ui --global --save" 
+
   },
   "keywords": [],
   "author": "",
