@@ -181,10 +181,11 @@ export class ModuleComponent {
 
 @Component({
   selector: 'discipline-comp',
-  template: `<div class="title"><i class="dropdown icon"></i> {{ currentDiscipline.title }}, {{ currentDiscipline.points }} з.е.</div>
+  template: `<div *ngIf="currentDiscipline.courses" class="title"><i class="dropdown icon"></i> {{ currentDiscipline.title }}, {{ currentDiscipline.points }} з.е. (курсов: {{currentDiscipline.courses.length}})</div>
    <div class="content">
-         <div *ngFor="let course of currentDiscipline.courses">
-                <one-course-comp *ngIf="course" [idCourse]='course'>  Онлайн-курсов для освоения данной дисциплины не обнаружено... </one-course-comp>
+        <div *ngIf="currentDiscipline.courses?.length == 0"> Онлайн-курсов для освоения данной дисциплины не обнаружено.</div>
+        <div *ngFor="let course of currentDiscipline.courses">
+                <one-course-comp *ngIf="course" [idCourse]='course'> </one-course-comp>
         </div>
 
     </div>`
