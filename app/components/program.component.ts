@@ -11,26 +11,33 @@ import { Program } from './program';
   <h1  class="ui  header">Программа: "{{ currentProgram.title }}"  </h1>
   </div>
   
-    
-      <h3>Обязательные модули</h3>
-    
-    
+<div class="ui top attached tabular menu">
+  <a class="item active" data-tab="first">Обязательные модули</a>
+  <a class="item" data-tab="second">Траектория образователной программы</a>
+  <a class="item" data-tab="third">Модули по выбору</a>
+  <a class="item" data-tab="four">Майноры</a>
+</div>
+<div class="ui bottom attached active tab segment" data-tab="first">
+    <h3>Обязательные модули</h3>
     <div class="ui styled accordion">
     <div  *ngFor="let module of currentProgram.modules"><module-comp [idModule]='module'> Загрузка... </module-comp></div>
     </div>
-     
-    
-      <h3>Траектория образователной программы</h3>
+</div>   
+<div class="ui bottom attached tab segment" data-tab="second">  
+    <h3>Траектория образователной программы</h3>
     
     <div class="ui styled accordion">
       <div *ngFor="let idEPT of currentProgram.educational_program_trajectories"><module-list-comp [idModuleList]='idEPT'></module-list-comp></div>
     </div>
-    
+</div> 
+ <div class="ui bottom attached tab segment" data-tab="third">     
       <h3>Модули по выбору</h3>
       <div *ngFor="let idcmp of currentProgram.cmp"><module-list-choice-comp [idChoiceModuleList]='idcmp'></module-list-choice-comp></div>
-    
- 
+</div> 
+<div class="ui bottom attached tab segment" data-tab="four">   
+  <h3>Майноры</h3>
   </div>
+</div>
   `,
   providers: [CoursesService]
 })
@@ -188,6 +195,8 @@ export class DisciplineComponent implements AfterViewInit{
 
     ngAfterViewInit() {
       $('.ui.accordion').accordion('refresh');
+      $('.menu .item').tab()
+;
   }
 
   getDiscipline(id: Number): void {
