@@ -234,6 +234,7 @@ export class DisciplineComponent implements AfterViewInit{
             <div>{{ currentCourse.title }}</div>
             <div>{{ currentCourse.profession_count }} профессий</div>
             <div>{{ currentCourse.program_count }} программ</div>
+            <button class="ui right floated positive ui oop-button button">Добавить</button>
         </div>`,
    styleUrls: ['app/styles/courses.css'],
 })

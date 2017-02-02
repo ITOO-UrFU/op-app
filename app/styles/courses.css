@@ -16,4 +16,11 @@
 
 .item.min{
     height: initial;
+    margin: 0px 0px;
+    padding: 5px 5px;
+}
+
+button.oop-button{
+    margin: 0 auto;
+    /*margin: 5px 0;*/
 }
