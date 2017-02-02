@@ -34,6 +34,7 @@ export class CoursesComponent implements OnInit {
             course.image = "https://openedu.urfu.ru/files/img/course-image-3.jpg";
           }
           else {
+            console.log(course.image)
             course.image = "http://openedu.urfu.ru:33011" + course.image;
           }
 

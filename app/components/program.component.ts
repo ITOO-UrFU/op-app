@@ -4,6 +4,7 @@ import { CoursesService } from '../services/courses.service'
 import { Response } from '@angular/http';
 import { Program } from './program';
 
+
 @Component({
   selector: 'program-comp',
   template: `<div class="article">
@@ -179,16 +180,22 @@ export class ModuleComponent {
   selector: 'discipline-comp',
   template: `<div class="title"><i class="dropdown icon"></i> {{ currentDiscipline.title }}, {{ currentDiscipline.points }} з.е.</div>
    <div class="content">
-              Онлайн-курсов для освоения данной дисциплины не обнаружено...
-          </div>`
+         <div *ngFor="let course of currentDiscipline.courses">
+                <one-course-comp *ngIf="course" [idCourse]='course'>  Онлайн-курсов для освоения данной дисциплины не обнаружено... </one-course-comp>
+        </div>
+
+    </div>`
 })
 
 export class DisciplineComponent implements AfterViewInit{
   @Input() idDiscipline: Number;
   currentDiscipline: any = {};
 
+
+
   constructor(private activateRoute: ActivatedRoute, private _coursesService: CoursesService) {
   }
+
     ngOnInit() {
     this.getDiscipline(this.idDiscipline);
   }
@@ -206,6 +213,43 @@ export class DisciplineComponent implements AfterViewInit{
         this.currentDiscipline = module;
         //console.log(this.currentDiscipline);
        
+      });
+
+  }
+
+}
+
+
+
+@Component({
+  selector: 'one-course-comp',
+  template: `<div class="item min">
+            <div>{{ currentCourse.start_date }}</div>
+            <img src="http://openedu.urfu.ru:33011{{currentCourse.image}}" />
+            <div>{{ currentCourse.type }}</div>
+            <div>{{ currentCourse.title }}</div>
+            <div>{{ currentCourse.profession_count }} профессий</div>
+            <div>{{ currentCourse.program_count }} программ</div>
+        </div>`,
+   styleUrls: ['app/styles/courses.css'],
+})
+export class OneCourseComponent {
+  @Input() idCourse: Number;
+  currentCourse: any = {};
+
+  constructor(private activateRoute: ActivatedRoute, private _coursesService: CoursesService) {
+  }
+
+    ngOnInit() {
+    this.geCourse(this.idCourse);
+  }
+
+  geCourse(id: Number): void {
+
+    this._coursesService.getElement('courses', id)
+      .subscribe((module) => {
+        this.currentCourse = module;
+        console.log(this.currentCourse.image);
       });
 
   }
