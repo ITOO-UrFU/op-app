@@ -37,6 +37,9 @@ import { Program } from './program';
 </div> 
 <div class="ui bottom attached tab segment" data-tab="four">   
   <h3>Майноры</h3>
+      <div class="ui styled accordion">
+    <div  *ngFor="let minors of currentProgram.minors"><module-comp [idModule]='minors'> Загрузка... </module-comp></div>
+    </div>
   </div>
 </div>
   `,
