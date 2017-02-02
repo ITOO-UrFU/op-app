@@ -10,34 +10,32 @@ import { Program } from './program';
   <div  class = "ui masthead vertical segment">
   <h1  class="ui  header">Программа: "{{ currentProgram.title }}"  </h1>
   </div>
-  <div class="ui styled accordion">
-    <div class="title">
-      <h3><i class="dropdown icon"></i>Обязательные модули для освоения</h3>
-    </div>
-    <div class="content">
-    <div class="accordion">
+  
+    
+      <h3>Обязательные модули</h3>
+    
+    
+    <div class="ui styled accordion">
     <div  *ngFor="let module of currentProgram.modules"><module-comp [idModule]='module'> Загрузка... </module-comp></div>
-     </div>
-     </div>
-    <div class="title">
-      <h3><i class="dropdown icon"></i>Пул траекторий образователной программы</h3>
     </div>
-    <div class="content">
+     
+    
+      <h3>Траектория образователной программы</h3>
+    
+    <div class="ui styled accordion">
       <div *ngFor="let idEPT of currentProgram.educational_program_trajectories"><module-list-comp [idModuleList]='idEPT'></module-list-comp></div>
     </div>
-    <div class="title">
-      <h3><i class="dropdown icon"></i>Пулы модулей по выбору</h3>
-    </div>
-    <div class="content">
+    
+      <h3>Модули по выбору</h3>
       <div *ngFor="let idcmp of currentProgram.cmp"><module-list-choice-comp [idChoiceModuleList]='idcmp'></module-list-choice-comp></div>
-    </div>
-  </div>
+    
+ 
   </div>
   `,
   providers: [CoursesService]
 })
 
-export class ProgramComponent implements AfterViewInit {
+export class ProgramComponent  {
   id: number;
   currentProgram: any = {};
 
@@ -51,9 +49,7 @@ export class ProgramComponent implements AfterViewInit {
     this.getProgram(this.id);
   }
 
-  ngAfterViewInit() {
-      $('.ui.accordion').accordion('refresh');
-  }
+
 
   getProgram(id: number): void {
 
@@ -70,11 +66,13 @@ export class ProgramComponent implements AfterViewInit {
 @Component({
   selector: 'module-list-comp',
   template: `<div *ngIf="currentModuleList">
-    <div class="title">
-  <i class="dropdown icon"></i> {{currentModuleList.title}} 
+
+  
+    <div class="title ">
+   {{currentModuleList.title}}
     </div>
   <div class="content">
-  Модули:
+  
   <div class="accordion">
   <div *ngFor="let module of currentModuleList.modules"> <module-comp [idModule]='module'> Загрузка... </module-comp></div></div></div></div>
   `
@@ -101,14 +99,13 @@ constructor(private activateRoute: ActivatedRoute, private _coursesService: Cour
 @Component({
   selector: 'module-list-choice-comp',
   template: `<div *ngIf="currentChoiceModuleList">
-  <div class="title">
-  <i class="dropdown icon"></i>
-  {{currentChoiceModuleList.title}}
+  <br />
+  <h4>{{ currentChoiceModuleList.title }}</h4>
+  
+  <p>Модули:</p>
+  <div class="ui styled accordion">
+  <div *ngFor="let module of currentChoiceModuleList.modules"> <module-comp [idModule]='module'> Загрузка... </module-comp></div>
   </div>
-  <div class="content">
-  Модули:
-  <div class="accordion">
-  <div *ngFor="let module of currentChoiceModuleList.modules"> <module-comp [idModule]='module'> Загрузка... </module-comp></div></div></div></div>
   `
 })
 export class ChoiceModuleListComponent{
@@ -139,6 +136,7 @@ constructor(private activateRoute: ActivatedRoute, private _coursesService: Cour
   <div class="content">
   Дисциплины:
   <div class="accordion">
+  
   <div *ngFor="let idDiscipline of currentModule.disciplines"><discipline-comp [idDiscipline]='idDiscipline'> Загрузка... </discipline-comp> 
   </div>
   </div>
@@ -178,7 +176,7 @@ export class ModuleComponent {
           </div>`
 })
 
-export class DisciplineComponent{
+export class DisciplineComponent implements AfterViewInit{
   @Input() idDiscipline: Number;
   currentDiscipline: any = {};
 
@@ -187,6 +185,11 @@ export class DisciplineComponent{
     ngOnInit() {
     this.getDiscipline(this.idDiscipline);
   }
+
+    ngAfterViewInit() {
+      $('.ui.accordion').accordion('refresh');
+  }
+
   getDiscipline(id: Number): void {
 
     this._coursesService.getElement('disciplines', id)
