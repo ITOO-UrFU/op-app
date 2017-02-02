@@ -8,7 +8,7 @@
 
     <div>
         <!-- | date: 'yMMMMd'-->
-        <div class="item" *ngFor="let course of CoursesList" (click)="onSelect(course)">
+        <div class="item" *ngFor="let course of CoursesList" >
             <div>{{ course.start_date }}</div>
             <!-- <a [routerLink]="course.id"> -->
             <img src="{{course.image}}" />
