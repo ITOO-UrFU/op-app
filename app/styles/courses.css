@@ -24,3 +24,7 @@ button.oop-button{
     margin: 0 auto;
     /*margin: 5px 0;*/
 }
+
+.item div {
+    margin: 2px 0;
+}

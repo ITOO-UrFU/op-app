@@ -231,9 +231,9 @@ export class DisciplineComponent implements AfterViewInit{
             <div>{{ currentCourse.start_date }}</div>
             <img src="http://openedu.urfu.ru:33011{{currentCourse.image}}" />
             <div>{{ currentCourse.type }}</div>
-            <div>{{ currentCourse.title }}</div>
-            <div>{{ currentCourse.profession_count }} профессий</div>
-            <div>{{ currentCourse.program_count }} программ</div>
+            <div style="font-size: 14pt;">{{ currentCourse.title }}</div>
+            <div>Профессий: {{ currentCourse.profession_count }} </div>
+            <div>Программ: {{ currentCourse.program_count }} </div>
             <button class="ui right floated positive ui oop-button button">Добавить</button>
         </div>`,
    styleUrls: ['app/styles/courses.css'],
